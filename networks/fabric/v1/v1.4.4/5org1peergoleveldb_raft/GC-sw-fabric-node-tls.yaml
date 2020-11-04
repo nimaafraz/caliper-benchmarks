@@ -20,7 +20,7 @@ mutual-tls: false
 caliper:
   blockchain: fabric
   command:
-    start: export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4; docker network create --attachable -d overlay dev-caliper-overlay-5org; docker stack deploy --compose-file networks/fabric/docker-compose/5org1peergoleveldb_raft/GC-single-sw-docker-compose-tls.yaml dev-caliper-overlay-5org;sleep 60s
+    start: export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4; docker network create --attachable -d overlay dev-caliper-overlay-5org; docker stack deploy --compose-file networks/fabric/docker-compose/5org1peergoleveldb_raft/GC-sw-docker-compose-tls.yaml dev-caliper-overlay-5org;sleep 60s
     end: docker-compose -f networks/fabric/docker-compose/5org1peergoleveldb_raft/GC-single-sw-docker-compose-tls.yaml down;(test -z \"$(docker ps -aq)\") || docker rm $(docker ps -aq);(test -z \"$(docker images dev* -q)\") || docker rmi $(docker images dev* -q);rm -rf /tmp/hfc-*
 
 info:
@@ -117,11 +117,11 @@ channels:
                 eventSource: true
 
         contracts:
-        - id: marbles
-          version: v0
-          language: node
-          path: src/fabric/samples/marbles/node
-          metadataPath: src/fabric/samples/marbles/node/metadata
+        # - id: marbles
+        #   version: v0
+        #   language: node
+        #   path: src/fabric/samples/marbles/node
+        #   metadataPath: src/fabric/samples/marbles/node/metadata
         - id: simple
           version: v0
           language: node
