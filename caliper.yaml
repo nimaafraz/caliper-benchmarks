@@ -1,0 +1,27 @@
+caliper:
+  logging:
+    # no need for timestamp and label
+    template: '%level% [%module%]: %message% %meta%'
+    formats:
+      # color codes look ugly in log files
+      colorize: false
+      # don't need these, since won't appear in the template
+      label: false
+      timestamp: false
+    targets:
+      file:
+        options:
+          # bump the log level from debug to warn, only log the critical stuff in this file
+          level: warn
+          filename: 'critical.log'
+      rotatingfile:
+        target: daily-rotate-file
+        enabled: true
+        options:
+          level: debug
+          datePattern: 'YYYY-MM-DD-HH'
+          zippedArchive: true
+          filename: 'debug-%DATE%.log'
+          options:
+            flags: a
+            mode: 0666
