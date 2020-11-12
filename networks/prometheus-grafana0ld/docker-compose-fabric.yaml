@@ -1,9 +1,11 @@
 version: '3'
 
+
 networks:
   dev-caliper-overlay-2org:
     external:
       name: dev-caliper-overlay-2org
+      
 volumes:
     prometheus_data: {}
     grafana_storage: {}
@@ -20,7 +22,6 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
-    # network_mode: "host"
     ports:
       - "9090:9090"
 
@@ -38,8 +39,6 @@ services:
     env_file:
       - ./grafana/config.monitoring
     restart: always
-    # network_mode: "host"
-
 
   cadvisor:
     image: google/cadvisor:v0.27.4
@@ -53,5 +52,3 @@ services:
     ports:
       - 8080:8080
     restart: always
-    # network_mode: "host"
-

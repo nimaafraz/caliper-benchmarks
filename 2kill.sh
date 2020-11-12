@@ -1,0 +1,1 @@
+docker service rm $(docker service ls -f name=dev-caliper-overlay-2org_ -q); docker stop $(docker ls -f name=dev-caliper-overlay-2org_ -q); docker rm $(docker ls -f name=dev-caliper-overlay-2org_ -q); docker network rm dev-caliper-overlay-2org ; docker stop $(docker ps -aq); docker rm $(docker ps -aq); docker network prune

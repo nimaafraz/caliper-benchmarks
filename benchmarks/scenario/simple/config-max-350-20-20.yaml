@@ -16,24 +16,23 @@ test:
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: 100000
+      txNumber: 400000
       rateControl:
-        type: fixed-rate
+        type: maximum-rate
         opts:
-          tps: 450
+          tps: 350
+          step: 20
+          sampleInterval: 20
+          includeFailed: true
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
-    - label: open
-      description: >-
-        Test description for the opening of an account through the deployed
-        contract.
-      txNumber: 100000
-      rateControl:
-        type: fixed-rate
-        opts:
-          tps: 450
-      workload:
-        module: benchmarks/scenario/simple/open.js
-        arguments: *simple-args
-   
+        # {
+        #   "type": "maximum-rate",
+        #   "opts": {
+        #     "tps": 100,
+        #     "step": 5,
+        #     "sampleInterval": 20,
+        #     "includeFailed": true
+        #   }
+        # }

@@ -14,4 +14,4 @@ scrape_configs:
     # assume single local caliper worker here, exposed on port 3000.
     # host.docker.internal if on mac
     # localhost otherwise
-    - targets: ['host.docker.internal:3000', 'localhost:3000']
+    - targets: ['host.docker.internal:3000', 'localhost:3000', 'localhost:3001', 'localhost:3002', 'localhost:3003', 'localhost:3004']

@@ -10,7 +10,7 @@ test:
     performance with simple account opening & querying transactions.
   workers:
     type: local
-    number: 5
+    number: 2
   rounds:
     - label: open
       description: >-
@@ -24,4 +24,86 @@ test:
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
-   
+
+# monitors:
+#     transaction:
+#     - module: prometheus-push
+#       options:
+#         pushInterval: 5
+#         pushUrl: "http://localhost:9090"
+monitors:
+    transaction:
+    - module: prometheus
+    options:
+      interval: 5
+      # url: "http://localhost:9090"
+
+
+# monitors:
+#   transaction:
+#   - module: logging
+
+
+
+  # resource:
+  # - module: prometheus
+  #   options:
+  #     interval: 5
+  #     url: "http://localhost:9090"
+  #     metrics:
+  #         include: [dev-.*, couch, peer, orderer]
+  #         queries:
+  #             - name: Endorse Time (s)
+  #               query: rate(endorser_propsal_duration_sum{chaincode="marbles:v0"}[1m])/rate(endorser_propsal_duration_count{chaincode="marbles:v0"}[1m])
+  #               step: 1
+  #               label: instance
+  #               statistic: avg
+  #             - name: Max Memory (MB)
+  #               query: sum(container_memory_rss{name=~".+"}) by (name)
+  #               step: 10
+  #               label: name
+  #               statistic: max
+  #               multiplier: 0.000001
+
+# monitors:
+#     transaction:
+#     - module: logging
+#       options:
+#         loggerModuleName: txinfo
+#         messageLevel: info
+#     - module: prometheus-push
+#       options:
+#         interval: 5
+#         push_url: "http://localhost:9091"
+#     resource:
+#     - module: prometheus
+#       options:
+#         interval: 5
+#         url: "http://localhost:9090"
+#         metrics:
+#             ignore: [prometheus, pushGateway, cadvisor, grafana, node-exporter]
+#             include:
+#                 Endorse Time (s):
+#                     query: rate(endorser_propsal_duration_sum{chaincode="marbles:v0"}[1m])/rate(endorser_propsal_duration_count{chaincode="marbles:v0"}[1m])
+#                     step: 1
+#                     label: instance
+#                     statistic: avg
+#                 Max Memory (MB):
+#                     query: sum(container_memory_rss{name=~".+"}) by (name)
+#                     step: 10
+#                     label: name
+#                     statistic: max
+#                     multiplier: 0.000001
+#         charting:
+#             polar:
+#                 metrics: [Max Memory (MB)]
+#             bar:
+#                 metrics: [all]
+#     - module: process
+#       options:
+#         interval: 3
+#         processes: [{ command: 'node', arguments: 'caliper.js', multiOutput: 'avg' }]
+#     - module: docker
+#       options:
+#         interval: 4
+#         containers: ['peer0.org1.example.com', 'peer0.org2.example.com', 'orderer0.example.com', 'orderer1.example.com', 'orderer2.example.com']

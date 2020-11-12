@@ -1,0 +1,73 @@
+simpleArgs: &simple-args
+  initialMoney: 10000
+  moneyToTransfer: 100
+  numberOfAccounts: &number-of-accounts 1000
+
+test:
+  name: simple
+  description: >-
+    This is an example benchmark for Caliper, to test the backend DLT's
+    performance with simple account opening & querying transactions.
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: open
+      description: >-
+        Test description for the opening of an account through the deployed
+        contract.
+      txNumber: 100000
+      rateControl:
+        type: record-rate
+        opts:
+          rateController:
+            type: fixed-rate
+            opts:
+              tps: 450
+          pathTemplate: ../tx_records_client<C>_round<R>.txt
+          outputFormat: TEXT
+          logEnd: true
+      workload:
+        module: benchmarks/scenario/simple/open.js
+        arguments: *simple-args
+
+  rounds:
+    - label: open
+      description: >-
+        Test description for the opening of an account through the deployed
+        contract.
+      txNumber: 100000
+      rateControl:
+        type: replay-rate
+        opts:
+          pathTemplate: ../tx_records_client<C>.txt
+          inputFormat: TEXT
+          logWarnings: true
+          defaultSleepTime: 50
+      workload:
+        module: benchmarks/scenario/simple/open.js
+        arguments: *simple-args
+
+
+        {
+          "type": "replay-rate",
+          "opts": {
+            "pathTemplate": "../tx_records_client<C>.txt",
+            "inputFormat": "TEXT",
+            "logWarnings": true,
+            "defaultSleepTime": 50
+            }
+        }
+
+#         {
+#   "type": "record-rate",
+#   "opts": {
+#     "rateController": {
+#       "type": "fixed-rate",
+#       "opts": {"tps" : 100}
+#     },
+#     "pathTemplate": "../tx_records_client<C>_round<R>.txt",
+#     "outputFormat": "TEXT",
+#     "logEnd": true
+#   }
+# }
