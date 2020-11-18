@@ -18,7 +18,7 @@ const util = require('util');
 
 const ERROR_SYSTEM = '{"code":300, "location": "%s", "reason": "system error: %s"}';
 const ERROR_WRONG_FORMAT = '{"code":301, "location": "%s", "reason": "command format is wrong"}';
-const ERROR_ACCOUNT_EXISTING = '{"code":302, "location": "%s", "reason": "account already exists"}';
+const ERROR_ACCOUNT_EXISTING = '{"code":302, "location": "%s", "reason": "account already exists-new"}';
 const ERROR_ACCOUNT_ABNORMAL = '{"code":303, "location": "%s", "reason": "abnormal account"}';
 const ERROR_MONEY_NOT_ENOUGH = '{"code":304, "location": "%s", "reason": "account\'s money is not enough"}';
 
