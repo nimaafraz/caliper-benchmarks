@@ -36,6 +36,7 @@ monitors:
     - module: prometheus
     options:
       interval: 5
+      scrapePort: '4000'
       # url: "http://localhost:9090"
 
 

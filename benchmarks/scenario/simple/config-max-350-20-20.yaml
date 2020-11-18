@@ -10,13 +10,13 @@ test:
     performance with simple account opening & querying transactions.
   workers:
     type: local
-    number: 5
+    number: 4
   rounds:
     - label: open
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: 400000
+      txNumber: 10000
       rateControl:
         type: maximum-rate
         opts:
@@ -36,3 +36,10 @@ test:
         #     "includeFailed": true
         #   }
         # }
+
+monitors:
+    transaction:
+    - module: prometheus
+    options:
+      interval: 5
+      scrapePort: '4000'

@@ -24,4 +24,9 @@ test:
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
-   
+monitors:
+    transaction:
+    - module: prometheus
+    # options:
+    #   interval: 5
+    #   scrapePort: '4000'

@@ -19,15 +19,14 @@ mutual-tls: false
 
 caliper:
   blockchain: fabric
-  command:
-    
+  command:    
     start: export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4;
           docker network create --attachable -d overlay dev-caliper-overlay-2org;
           docker-compose -f networks/prometheus-grafana/docker-compose-fabric.yaml up -d;
           sleep 3s;
-          docker stack deploy --compose-file  networks/fabric/docker-compose/5org1peergoleveldb_raft/2org-single-sw-docker-compose-tls-prom.yaml dev-caliper-overlay-2org;
+          docker stack deploy --compose-file  networks/fabric/docker-compose/5org1peergoleveldb_raft/2org-sw-docker-compose-tls.yaml dev-caliper-overlay-2org;
           sleep 60s
-    # start: export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4; docker network create --attachable -d overlay dev-caliper-overlay-2org; docker stack deploy --compose-file  networks/fabric/docker-compose/5org1peergoleveldb_raft/2org-single-sw-docker-compose-tls-prom.yaml dev-caliper-overlay-2org;sleep 60s
+    # start: export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4; docker network create --attachable -d overlay dev-caliper-overlay-2org; docker stack deploy --compose-file networks/fabric/docker-compose/5org1peergoleveldb_raft/2org-sw-docker-compose-tls.yaml dev-caliper-overlay-2org;sleep 60s
     end: docker-compose -f networks/fabric/docker-compose/5org1peergoleveldb_raft/GC-single-sw-docker-compose-tls.yaml down;(test -z \"$(docker ps -aq)\") || docker rm $(docker ps -aq);(test -z \"$(docker images dev* -q)\") || docker rmi $(docker images dev* -q);rm -rf /tmp/hfc-*
 
 info:

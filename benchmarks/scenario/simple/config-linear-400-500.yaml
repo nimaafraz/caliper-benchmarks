@@ -1,7 +1,7 @@
 simpleArgs: &simple-args
   initialMoney: 10000
   moneyToTransfer: 100
-  numberOfAccounts: &number-of-accounts 100000
+  numberOfAccounts: &number-of-accounts 1000000
 
 test:
   name: simple
@@ -20,7 +20,7 @@ test:
       rateControl:
         type: linear-rate
         opts:
-          startingTps: 400
+          startingTps: 300
           finishingTps: 500
       workload:
         module: benchmarks/scenario/simple/open.js
@@ -29,3 +29,10 @@ test:
         # "opts": {
         #   "startingTps": 25,
         #   "finishingTps": 75
+        
+monitors:
+    transaction:
+    - module: prometheus
+    options:
+      interval: 5
+      scrapePort: '4000'
