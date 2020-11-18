@@ -93,9 +93,9 @@ let SimpleChaincode = class {
         let account = params[0];
         let money = await stub.getState(account);
 
-        if (money.toString()) {
-            return getErrorResponse('open', ERROR_ACCOUNT_EXISTING);
-        }
+        // if (money.toString()) {
+        //     return getErrorResponse('open', ERROR_ACCOUNT_EXISTING);
+        // }
 
         let initMoney = parseInt(params[1]);
         if (isNaN(initMoney)) {
