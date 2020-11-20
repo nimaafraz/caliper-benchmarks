@@ -36,6 +36,18 @@ test:
     #   workload:
     #     module: benchmarks/scenario/simple/open.js
     #     arguments: *simple-args
+    # - label: open
+    #   description: >-
+    #     Test description for the opening of an account through the deployed
+    #     contract.
+    #   txNumber: 100000
+    #   rateControl:
+    #     type: fixed-rate
+    #     opts:
+    #       tps: 450
+    #   workload:
+    #     module: benchmarks/scenario/simple/open.js
+    #     arguments: *simple-args
     - label: open
       description: >-
         Test description for the opening of an account through the deployed
@@ -44,19 +56,7 @@ test:
       rateControl:
         type: fixed-rate
         opts:
-          tps: 300
-      workload:
-        module: benchmarks/scenario/simple/open.js
-        arguments: *simple-args
-    - label: open
-      description: >-
-        Test description for the opening of an account through the deployed
-        contract.
-      txNumber: 100000
-      rateControl:
-        type: fixed-rate
-        opts:
-          tps: 400
+          tps: 500
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args

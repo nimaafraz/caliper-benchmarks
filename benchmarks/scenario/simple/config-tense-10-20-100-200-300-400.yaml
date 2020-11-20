@@ -16,19 +16,7 @@ test:
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: 100
-      rateControl:
-        type: fixed-rate
-        opts:
-          tps: 1
-      workload:
-        module: benchmarks/scenario/simple/open.js
-        arguments: *simple-args
-    - label: open
-      description: >-
-        Test description for the opening of an account through the deployed
-        contract.
-      txNumber: 100
+      txNumber: 1000
       rateControl:
         type: fixed-rate
         opts:
@@ -40,7 +28,7 @@ test:
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: 100
+      txNumber: 1000
       rateControl:
         type: fixed-rate
         opts:
@@ -52,7 +40,7 @@ test:
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: *number-of-accounts
+      txNumber: 10000
       rateControl:
         type: fixed-rate
         opts:
@@ -108,6 +96,18 @@ test:
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
+    - label: open
+      description: >-
+        Test description for the opening of an account through the deployed
+        contract.
+      txNumber: *number-of-accounts
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 500
+      workload:
+        module: benchmarks/scenario/simple/open.js
+        arguments: *simple-args
     # - label: open
     #   description: >-
     #     Test description for the opening of an account through the deployed
@@ -142,3 +142,6 @@ test:
     #     arguments:
     #       << : *simple-args
     #       money: 100
+monitors:
+    transaction:
+    - module: prometheus
