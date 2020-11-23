@@ -48,9 +48,9 @@ Orderer: &OrdererDefaults
 
     BatchTimeout: 500ms
     BatchSize:
-        MaxMessageCount: 100
-        AbsoluteMaxBytes: 2 MB
-        PreferredMaxBytes: 2 MB
+        MaxMessageCount: 500
+        AbsoluteMaxBytes: 1 MB
+        PreferredMaxBytes: 1 MB
 
     MaxChannels: 0
     EtcdRaft:
