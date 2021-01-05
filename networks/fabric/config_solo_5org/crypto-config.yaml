@@ -12,46 +12,69 @@
 # limitations under the License.
 #
 
-
+# ---------------------------------------------------------------------------
+# "OrdererOrgs" - Definition of organizations managing orderer nodes
+# ---------------------------------------------------------------------------
 OrdererOrgs:
-- Name: Orderer
-  Domain: example.com
-
-  Template:
-      Count: 1
-
+  # ---------------------------------------------------------------------------
+  # Orderer
+  # ---------------------------------------------------------------------------
+  - Name: Orderer
+    Domain: example.com
+    # ---------------------------------------------------------------------------
+    # "Specs" - See PeerOrgs below for complete description
+    # ---------------------------------------------------------------------------
+    Specs:
+      - Hostname: orderer
+# ---------------------------------------------------------------------------
+# "PeerOrgs" - Definition of organizations managing peer nodes
+# ---------------------------------------------------------------------------
 PeerOrgs:
-- Name: Org1
-  Domain: org1.example.com
-  Template:
+  # ---------------------------------------------------------------------------
+  # Org1
+  # ---------------------------------------------------------------------------
+  - Name: Org1
+    Domain: org1.example.com    
+    Template:
+      Count: 1     
+    Users:
       Count: 1
-  Users:
+  # ---------------------------------------------------------------------------
+  # Org2: See "Org1" for full specification
+  # ---------------------------------------------------------------------------
+  - Name: Org2
+    Domain: org2.example.com
+    Template:
       Count: 1
-
-- Name: Org2
-  Domain: org2.example.com
-  Template:
-      Count: 1
-  Users:
-      Count: 1
-      
-- Name: Org3
-  Domain: org3.example.com
-  Template:
-      Count: 1
-  Users:
+    Users:
       Count: 1
 
-- Name: Org4
-  Domain: org4.example.com
-  Template:
+  # ---------------------------------------------------------------------------
+  # Org3: See "Org1" for full specification
+  # ---------------------------------------------------------------------------
+  - Name: Org3
+    Domain: org3.example.com
+    Template:
       Count: 1
-  Users:
+    Users:
       Count: 1
 
-- Name: Org5
-  Domain: org5.example.com
-  Template:
+  # ---------------------------------------------------------------------------
+  # Org4: See "Org4" for full specification
+  # ---------------------------------------------------------------------------
+  - Name: Org4
+    Domain: org4.example.com
+    Template:
       Count: 1
-  Users:
+    Users:
+      Count: 1
+
+  # ---------------------------------------------------------------------------
+  # Org5: See "Org5" for full specification
+  # ---------------------------------------------------------------------------
+  - Name: Org5
+    Domain: org5.example.com
+    Template:
+      Count: 1
+    Users:
       Count: 1

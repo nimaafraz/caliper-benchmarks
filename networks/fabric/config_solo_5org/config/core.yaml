@@ -196,10 +196,6 @@ peer:
             reconcileSleepInterval: 1m
             # reconciliationEnabled is a flag that indicates whether private data reconciliation is enable or not.
             reconciliationEnabled: true
-            # skipPullingInvalidTransactionsDuringCommit is a flag that indicates whether pulling of invalid
-            # transaction's private data from other peers need to be skipped during the commit time and pulled
-            # only through reconciler.
-            skipPullingInvalidTransactionsDuringCommit: false
 
         # Gossip state transfer related configuration
         state:
@@ -317,26 +313,15 @@ peer:
 
     # Delivery service related config
     deliveryclient:
-        # The total time to spend retrying connections to ordering nodes
-        # before giving up and returning an error.
+        # It sets the total time the delivery service may spend in reconnection
+        # attempts until its retry logic gives up and returns an error
         reconnectTotalTimeThreshold: 3600s
 
-        # The connection timeout when connecting to ordering service nodes.
+        # It sets the delivery service <-> ordering service node connection timeout
         connTimeout: 3s
 
-        # The maximum delay between consecutive connection retry attempts to
-        # ordering nodes.
+        # It sets the delivery service maximal delay between consecutive retries
         reConnectBackoffThreshold: 3600s
-
-        # A list of orderer endpoint addresses which should be overridden
-        # when found in channel configurations.
-        addressOverrides:
-        #  - from:
-        #    to:
-        #    caCertsFile:
-        #  - from:
-        #    to:
-        #    caCertsFile:
 
     # Type for the local MSP - by default it's of type bccsp
     localMspType: bccsp
