@@ -31,15 +31,15 @@ services:
         - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
         - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         - FABRIC_CA_SERVER_TLS_ENABLED=true
-        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-tls/tlsca.org1.example.com-cert.pem
-        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/key.pem
+        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem
+        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         ports:
         - "7054:7054"
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/key.pem'
         volumes:
         - ../../config_solo_5org/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         - ../../config_solo_5org/crypto-config/peerOrganizations/org1.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
-        # #container_name: ca.org1.example.com
+    # #container_name: ca.org1.example.com
         deploy:
             placement:
                 constraints: [node.hostname == caliper-302-2]
@@ -56,11 +56,11 @@ services:
         - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
         - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         - FABRIC_CA_SERVER_TLS_ENABLED=true
-        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-tls/tlsca.org2.example.com-cert.pem
-        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/key.pem
+        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
+        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         ports:
         - "8054:7054"
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/key.pem'
         volumes:
         - ../../config_solo_5org/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         - ../../config_solo_5org/crypto-config/peerOrganizations/org2.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -81,11 +81,11 @@ services:
         - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.example.com-cert.pem
         - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         - FABRIC_CA_SERVER_TLS_ENABLED=true
-        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-tls/tlsca.org3.example.com-cert.pem
-        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/key.pem
+        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.example.com-cert.pem
+        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         ports:
         - "9054:7054"
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org3.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/key.pem'
         volumes:
         - ../../config_solo_5org/crypto-config/peerOrganizations/org3.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         - ../../config_solo_5org/crypto-config/peerOrganizations/org3.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -106,11 +106,11 @@ services:
         - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.example.com-cert.pem
         - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         - FABRIC_CA_SERVER_TLS_ENABLED=true
-        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-tls/tlsca.org4.example.com-cert.pem
-        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/key.pem
+        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org4.example.com-cert.pem
+        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         ports:
         - "8854:7054"
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org4.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/key.pem'
         volumes:
         - ../../config_solo_5org/crypto-config/peerOrganizations/org4.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         - ../../config_solo_5org/crypto-config/peerOrganizations/org4.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -131,11 +131,11 @@ services:
         - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.example.com-cert.pem
         - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         - FABRIC_CA_SERVER_TLS_ENABLED=true
-        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-tls/tlsca.org5.example.com-cert.pem
-        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-tls/key.pem
+        - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org5.example.com-cert.pem
+        - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/key.pem
         ports:
         - "9954:7054"
-        command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+        command: sh -c 'fabric-ca-server start -b admin:adminpw -d --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org5.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/key.pem'
         volumes:
         - ../../config_solo_5org/crypto-config/peerOrganizations/org5.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         - ../../config_solo_5org/crypto-config/peerOrganizations/org5.example.com/tlsca/:/etc/hyperledger/fabric-ca-server-tls
@@ -144,34 +144,63 @@ services:
             placement:
                 constraints: [node.hostname == caliper-302-6]
 
+    # orderer.example.com:
+    # container_name: orderer.example.com
+    # image: hyperledger/fabric-orderer:${FABRIC_VERSION}
+    # environment:
+    #   - ORDERER_GENERAL_LOGLEVEL=debug
+    #   - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+    #   - ORDERER_GENERAL_GENESISMETHOD=file
+    #   - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/orgs.genesis.block
+    #   - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+    #   - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
+    #   - ORDERER_GENERAL_TLS_ENABLED=true
+    #   - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/msp/orderer/tls/server.key
+    #   - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/msp/orderer/tls/server.crt
+    #   - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/msp/orderer/tls/ca.crt, /etc/hyperledger/msp/peerOrg1/tls/ca.crt, /etc/hyperledger/msp/peerOrg2/tls/ca.crt]
+    # working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+    # command: orderer
+    # ports:
+    #   - 7050:7050
+    # volumes:
+    #     - ../../config_solo:/etc/hyperledger/configtx
+    #     - ../../config_solo_5org/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
+    #     - ../../config_solo_5org/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peerOrg1
+    #     - ../../config_solo_5org/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peerOrg2
 
-    orderer0_example_com:
-        # #container_name: orderer0.example.com
+    orderer_example_com:
+        # #container_name: orderer.example.com
         image: hyperledger/fabric-orderer:${FABRIC_CA_VERSION}
         networks:
             dev-caliper-overlay-5org:
                 aliases:
-                - orderer0.example.com 
+                - orderer.example.com 
         environment:
         - FABRIC_LOGGING_SPEC=grpc=debug:debug
         - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
         - ORDERER_GENERAL_GENESISMETHOD=file
-        - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/genesis.block
+        - ORDERER_GENERAL_GENESISFILE=/etc/hyperledger/configtx/orgs.genesis.block
         - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
         - ORDERER_GENERAL_LOCALMSPDIR=/etc/hyperledger/msp/orderer/msp
         - ORDERER_GENERAL_TLS_ENABLED=true
         - ORDERER_GENERAL_TLS_PRIVATEKEY=/etc/hyperledger/msp/orderer/tls/server.key
+        # - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/msp/orderer/tls/ca.crt]
         - ORDERER_GENERAL_TLS_CERTIFICATE=/etc/hyperledger/msp/orderer/tls/server.crt
-        - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/msp/orderer/tls/ca.crt]
-        - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/etc/hyperledger/msp/orderer/tls/server.crt
-        - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/etc/hyperledger/msp/orderer/tls/server.key
+        - ORDERER_GENERAL_TLS_ROOTCAS=[/etc/hyperledger/msp/orderer/tls/ca.crt, /etc/hyperledger/msp/peerOrg1/tls/ca.crt, /etc/hyperledger/msp/peerOrg2/tls/ca.crt, /etc/hyperledger/msp/peerOrg3/tls/ca.crt, /etc/hyperledger/msp/peerOrg4/tls/ca.crt, /etc/hyperledger/msp/peerOrg5/tls/ca.crt]
+        # - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/etc/hyperledger/msp/orderer/tls/server.crt
+        # - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/etc/hyperledger/msp/orderer/tls/server.key
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric
         command: orderer
         ports:
         - 7050:7050
         volumes:
         - ../../config_solo_5org/:/etc/hyperledger/configtx
-        - ../../config_solo_5org/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/:/etc/hyperledger/msp/orderer
+        - ../../config_solo_5org/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/:/etc/hyperledger/msp/orderer
+        - ../../config_solo_5org/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peerOrg1
+        - ../../config_solo_5org/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peerOrg2
+        - ../../config_solo_5org/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/:/etc/hyperledger/msp/peerOrg3
+        - ../../config_solo_5org/crypto-config/peerOrganizations/org4.example.com/peers/peer0.org4.example.com/:/etc/hyperledger/msp/peerOrg4
+        - ../../config_solo_5org/crypto-config/peerOrganizations/org5.example.com/peers/peer0.org5.example.com/:/etc/hyperledger/msp/peerOrg5
         # depends_on:
         # - ca.org1.example.com
         # - ca.org2.example.com
@@ -351,9 +380,10 @@ services:
         - 7051:7051
         volumes:
         - /var/run/:/host/var/run/
+        - ../../config_solo_5org/mychannel.tx:/etc/hyperledger/configtx/mychannel.tx
         - ../../config_solo_5org/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/:/etc/hyperledger/msp/peer
         # depends_on:
-        # - orderer0.example.com
+        # - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         deploy:
@@ -398,7 +428,7 @@ services:
         - /var/run/:/host/var/run/
         - ../../config_solo_5org/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/:/etc/hyperledger/msp/peer
         # depends_on:
-        # - orderer0.example.com
+        # - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         deploy:
@@ -443,7 +473,7 @@ services:
         - /var/run/:/host/var/run/
         - ../../config_solo_5org/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/:/etc/hyperledger/msp/peer
         # depends_on:
-        # - orderer0.example.com
+        # - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         deploy:
@@ -488,7 +518,7 @@ services:
         - /var/run/:/host/var/run/
         - ../../config_solo_5org/crypto-config/peerOrganizations/org4.example.com/peers/peer0.org4.example.com/:/etc/hyperledger/msp/peer
         # depends_on:
-        # - orderer0.example.com
+        # - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         deploy:
@@ -533,7 +563,7 @@ services:
         - /var/run/:/host/var/run/
         - ../../config_solo_5org/crypto-config/peerOrganizations/org5.example.com/peers/peer0.org5.example.com/:/etc/hyperledger/msp/peer
         # depends_on:
-        # - orderer0.example.com
+        # - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         deploy:

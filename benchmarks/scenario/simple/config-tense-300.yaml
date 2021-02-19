@@ -16,7 +16,7 @@ test:
       description: >-
         Test description for the opening of an account through the deployed
         contract.
-      txNumber: 100000
+      txNumber: 500000
       rateControl:
         type: fixed-rate
         opts:

@@ -74,11 +74,11 @@ channels:
                 eventSource: true
 
         contracts:
-        - id: marbles
-          version: v0
-          language: node
-          path: src/fabric/samples/marbles/node
-          metadataPath: src/fabric/samples/marbles/node/metadata
+        # - id: marbles
+        #   version: v0
+        #   language: node
+        #   path: src/fabric/samples/marbles/node
+        #   metadataPath: src/fabric/samples/marbles/node/metadata
         - id: simple
           version: v0
           language: node

@@ -26,7 +26,7 @@ caliper:
 info:
   Version: 2.1.0
   Size: 5 Orgs with 1 Peer
-  Orderer: Raft
+  Orderer: Solo,
   Distribution: Single Host
   StateDB: GoLevelDB
 
@@ -90,6 +90,7 @@ clients:
         path: networks/fabric/config_solo_5org/crypto-config/peerOrganizations/org5.example.com/users/User1@org5.example.com/msp/keystore/key.pem
       clientSignedCert:
         path: networks/fabric/config_solo_5org/crypto-config/peerOrganizations/org5.example.com/users/User1@org5.example.com/msp/signcerts/User1@org5.example.com-cert.pem
+
 channels:
     mychannel:
         created: false
@@ -99,7 +100,7 @@ channels:
             msps: ['Org1MSP', 'Org2MSP', 'Org3MSP', 'Org4MSP', 'Org5MSP']
             version: 0
         orderers:
-        - orderer0.example.com
+        - orderer.example.com
         # - orderer1.example.com
         # - orderer2.example.com
         # - orderer3.example.com
@@ -135,7 +136,7 @@ channels:
 #         msps: ['Org1MSP', 'Org2MSP']
 #         version: 0
 #     orderers:
-#     - orderer0.example.com
+#     - orderer.example.com
 #     - orderer1.example.com
 #     - orderer2.example.com
 #     - orderer3.example.com
@@ -222,12 +223,12 @@ organizations:
       path: networks/fabric/config_solo_5org/crypto-config/peerOrganizations/org5.example.com/users/Admin@org5.example.com/msp/signcerts/Admin@org5.example.com-cert.pem
 
 orderers:
-  orderer0.example.com:
+  orderer.example.com:
     url: grpcs://localhost:7050
     grpcOptions:
-      ssl-target-name-override: orderer0.example.com
+      ssl-target-name-override: orderer.example.com
     tlsCACerts:
-        path: networks/fabric/config_solo_5org/crypto-config/ordererOrganizations/example.com/orderers/orderer0.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+        path: networks/fabric/config_solo_5org/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
   # orderer1.example.com:
   #   url: grpcs://localhost:8050
   #   grpcOptions:
