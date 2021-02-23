@@ -106,9 +106,9 @@ let SimpleChaincode = class {
         try {
             // expand enumerable Buffer to byte array with the ... operator
             // await stub.putState(account, Buffer.from(params[1]));
-            await stub.putState(account, Buffer.from(out_auction));
-            console.log(out_auction);
-            console.log('out_auction');
+            await stub.putState(account, Buffer.from(out_auction.toString()));
+            console.log(Buffer.from(out_auction.toString()));
+            console.log('Buffer.from(out_auction.toString())');
         } catch (err) {
             return getErrorResponse('open', ERROR_SYSTEM, err);
         }
@@ -155,10 +155,24 @@ let SimpleChaincode = class {
         let money;
         try {
             money = await stub.getState(params[0]);
-            console.log(money.toString('utf8'));
-            console.log(money.toString());
-            console.log(money);
 
+            console.log('JSON.stringify(money)');
+            console.log(JSON.stringify(money));
+            console.log("params[0]");
+            console.log(params[0]);
+            console.log("-------------------------");
+            console.log("params");
+            console.log(params);;
+            console.log("-------------------------");    
+            console.log("money.toString('utf8')");
+            console.log(money.toString('utf8'));
+            console.log("-------------------------");
+            console.log("money.toString()");
+            console.log(money.toString());
+            console.log("-------------------------");
+            console.log('money');
+            console.log(money);
+            console.log("-------------------------")
             console.log('query executed -Nima4');
 
         } catch (err) {
@@ -342,121 +356,121 @@ function auction_nima(){
         return Math.min(sum_toSell,sum_toBuy);
         }
 
-    // function generate_vnos(){
-    //     var vnos = [];
-    //     var ask_max=100;
-    //     var bid_max=100;
-    //     // function vno(vno_id, vno_name, balance, ask, bid, quantity, won_quantity){
-    //     var vno1 = new vno(1, 'VNO1',10000,rand(1,ask_max),null,rand(0,1000),null);
-    //     var vno2 = new vno(2, 'VNO2',10000,rand(1,ask_max),null,rand(0,1000),null);
-    //     var vno3 = new vno(3, 'VNO3',10000,rand(1,ask_max),null,rand(0,1000),null);
-    //     var vno4 = new vno(4, 'VNO4',10000,rand(1,ask_max),null,rand(0,1000),null);
-    //     var vno5 = new vno(5, 'VNO5',10000,rand(1,ask_max),null,rand(0,1000),null);
-    //     var vno6 = new vno(6, 'VNO6',10000,null,rand(1,bid_max),rand(0,1000),null);
-    //     var vno7 = new vno(7, 'VNO7',10000,null,rand(1,bid_max),rand(0,1000),null);
-    //     var vno8 = new vno(8, 'VNO8',10000,null,rand(1,bid_max),rand(0,1000),null);
-    //     var vno9 = new vno(9, 'VNO9',10000,null,rand(1,bid_max),rand(0,1000),null);
-    //     var vno10 = new vno(10, 'VNO10',10000,null,rand(1,bid_max),rand(0,1000),null);
-
-    //     vnos = [vno1,vno2,vno3,vno4,vno5,vno6,vno7,vno8,vno9,vno10];
-    //     return vnos;
-    // }
-
     function generate_vnos(){
-        var vnos = [
-            {
-              "vno_id": 1,
-              "vno_name": "VNO1",
-              "balance": 10000,
-              "ask": 98,
-              "bid": null,
-              "quantity": 182,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 2,
-              "vno_name": "VNO2",
-              "balance": 10000,
-              "ask": 24,
-              "bid": null,
-              "quantity": 78,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 3,
-              "vno_name": "VNO3",
-              "balance": 10000,
-              "ask": 27,
-              "bid": null,
-              "quantity": 652,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 4,
-              "vno_name": "VNO4",
-              "balance": 10000,
-              "ask": 61,
-              "bid": null,
-              "quantity": 24,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 5,
-              "vno_name": "VNO5",
-              "balance": 10000,
-              "ask": 75,
-              "bid": null,
-              "quantity": 119,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 6,
-              "vno_name": "VNO6",
-              "balance": 10000,
-              "ask": null,
-              "bid": 63,
-              "quantity": 491,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 7,
-              "vno_name": "VNO7",
-              "balance": 10000,
-              "ask": null,
-              "bid": 69,
-              "quantity": 179,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 8,
-              "vno_name": "VNO8",
-              "balance": 10000,
-              "ask": null,
-              "bid": 68,
-              "quantity": 397,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 9,
-              "vno_name": "VNO9",
-              "balance": 10000,
-              "ask": null,
-              "bid": 75,
-              "quantity": 579,
-              "won_quantity": 0
-            },
-            {
-              "vno_id": 10,
-              "vno_name": "VNO10",
-              "balance": 10000,
-              "ask": null,
-              "bid": 6,
-              "quantity": 804,
-              "won_quantity": 0
-            }
-          ];        
+        var vnos = [];
+        var ask_max=100;
+        var bid_max=100;
+        // function vno(vno_id, vno_name, balance, ask, bid, quantity, won_quantity){
+        var vno1 = new vno(1, 'VNO1',10000,rand(1,ask_max),null,rand(0,1000),null);
+        var vno2 = new vno(2, 'VNO2',10000,rand(1,ask_max),null,rand(0,1000),null);
+        var vno3 = new vno(3, 'VNO3',10000,rand(1,ask_max),null,rand(0,1000),null);
+        var vno4 = new vno(4, 'VNO4',10000,rand(1,ask_max),null,rand(0,1000),null);
+        var vno5 = new vno(5, 'VNO5',10000,rand(1,ask_max),null,rand(0,1000),null);
+        var vno6 = new vno(6, 'VNO6',10000,null,rand(1,bid_max),rand(0,1000),null);
+        var vno7 = new vno(7, 'VNO7',10000,null,rand(1,bid_max),rand(0,1000),null);
+        var vno8 = new vno(8, 'VNO8',10000,null,rand(1,bid_max),rand(0,1000),null);
+        var vno9 = new vno(9, 'VNO9',10000,null,rand(1,bid_max),rand(0,1000),null);
+        var vno10 = new vno(10, 'VNO10',10000,null,rand(1,bid_max),rand(0,1000),null);
+
+        vnos = [vno1,vno2,vno3,vno4,vno5,vno6,vno7,vno8,vno9,vno10];
         return vnos;
     }
+
+    // function generate_vnos(){
+    //     var vnos = [
+    //         {
+    //           "vno_id": 1,
+    //           "vno_name": "VNO1",
+    //           "balance": 10000,
+    //           "ask": 98,
+    //           "bid": null,
+    //           "quantity": 182,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 2,
+    //           "vno_name": "VNO2",
+    //           "balance": 10000,
+    //           "ask": 24,
+    //           "bid": null,
+    //           "quantity": 78,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 3,
+    //           "vno_name": "VNO3",
+    //           "balance": 10000,
+    //           "ask": 27,
+    //           "bid": null,
+    //           "quantity": 652,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 4,
+    //           "vno_name": "VNO4",
+    //           "balance": 10000,
+    //           "ask": 61,
+    //           "bid": null,
+    //           "quantity": 24,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 5,
+    //           "vno_name": "VNO5",
+    //           "balance": 10000,
+    //           "ask": 75,
+    //           "bid": null,
+    //           "quantity": 119,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 6,
+    //           "vno_name": "VNO6",
+    //           "balance": 10000,
+    //           "ask": null,
+    //           "bid": 63,
+    //           "quantity": 491,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 7,
+    //           "vno_name": "VNO7",
+    //           "balance": 10000,
+    //           "ask": null,
+    //           "bid": 69,
+    //           "quantity": 179,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 8,
+    //           "vno_name": "VNO8",
+    //           "balance": 10000,
+    //           "ask": null,
+    //           "bid": 68,
+    //           "quantity": 397,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 9,
+    //           "vno_name": "VNO9",
+    //           "balance": 10000,
+    //           "ask": null,
+    //           "bid": 75,
+    //           "quantity": 579,
+    //           "won_quantity": 0
+    //         },
+    //         {
+    //           "vno_id": 10,
+    //           "vno_name": "VNO10",
+    //           "balance": 10000,
+    //           "ask": null,
+    //           "bid": 6,
+    //           "quantity": 804,
+    //           "won_quantity": 0
+    //         }
+    //       ];   
+    //     return vnos;
+    // }
 
     function MC_settle(sellers,buyers,MC_point,MC_quantity){
         // const sellers_temp = sellers;
@@ -615,7 +629,7 @@ function calc_won(vnos_org,newvnos){
     console.log('\'===================================auction===================================\'');
     // console.warn('\'===================================auction===================================\'');
     // console.log(sellers);
-    console.table(sellers);
+    // console.table(sellers);
 
     // for (j = 0; j <10000; j++){
     // console.log("=========================",j,"=======================");
@@ -625,6 +639,7 @@ function calc_won(vnos_org,newvnos){
     // }
     // var a=4000000000000000000000000000000;
     // return sellers.toString();
+    console.log("sellers.concat(buyers)");
     console.log(sellers.concat(buyers));
     return sellers.concat(buyers);
 }
