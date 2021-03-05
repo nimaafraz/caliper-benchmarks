@@ -261,8 +261,9 @@ function auction_nima8k(){
     for (var i=1; i < 2; i++){
         tmp_auction.concat("----------------Next Round ----------------");
         tmp_auction.concat(auction_nima());
-    }}    
+    }    
     return tmp_auction;
+}
 
 function auction_nima(){
 
