@@ -107,14 +107,14 @@ let SimpleChaincode = class {
             // expand enumerable Buffer to byte array with the ... operator
             // await stub.putState(account, Buffer.from(params[1]));
             await stub.putState(account, Buffer.from(out_auction.toString()));
-            //------console.log(Buffer.from(out_auction.toString()));
-            //------console.log('Buffer.from(out_auction.toString())');
+            console.log(Buffer.from(out_auction.toString()));
+            console.log('Buffer.from(out_auction.toString())');
         } catch (err) {
             return getErrorResponse('open', ERROR_SYSTEM, err);
         }
         let moneyy = await stub.getState(params[0]);
-        //------console.log(moneyy.toString());
-        //------console.log('moneyy');
+        console.log(moneyy.toString());
+        console.log('moneyy');
 
         return shim.success();
     }
@@ -156,24 +156,24 @@ let SimpleChaincode = class {
         try {
             money = await stub.getState(params[0]);
 
-            //------console.log('JSON.stringify(money)');
-            //------console.log(JSON.stringify(money));
-            //------console.log("params[0]");
-            //------console.log(params[0]);
-            //------console.log("-------------------------");
-            //------console.log("params");
-            //------console.log(params);;
-            //------console.log("-------------------------");    
-            //------console.log("money.toString('utf8')");
-            //------console.log(money.toString('utf8'));
-            //------console.log("-------------------------");
-            //------console.log("money.toString()");
-            //------console.log(money.toString());
-            //------console.log("-------------------------");
-            //------console.log('money');
-            //------console.log(money);
-            //------console.log("-------------------------")
-            //------console.log('query executed -Nima4');
+            console.log('JSON.stringify(money)');
+            console.log(JSON.stringify(money));
+            console.log("params[0]");
+            console.log(params[0]);
+            console.log("-------------------------");
+            console.log("params");
+            console.log(params);;
+            console.log("-------------------------");    
+            console.log("money.toString('utf8')");
+            console.log(money.toString('utf8'));
+            console.log("-------------------------");
+            console.log("money.toString()");
+            console.log(money.toString());
+            console.log("-------------------------");
+            console.log('money');
+            console.log(money);
+            console.log("-------------------------")
+            console.log('query executed -Nima4');
 
         } catch (err) {
             return getErrorResponse('query', ERROR_SYSTEM, err);
@@ -182,7 +182,7 @@ let SimpleChaincode = class {
         if (!money) {
             return getErrorResponse('query', ERROR_ACCOUNT_ABNORMAL);
         }
-        //------console.log(money.toString('utf8'));
+        console.log(money.toString('utf8'));
         return shim.success(money);
     }
 
@@ -258,7 +258,7 @@ let rand = function(min, max) {
 
 function auction_nima8k(){
     var tmp_auction=[];
-    for (var i=1; i < 800; i++){
+    for (var i=1; i < 2; i++){
         tmp_auction.concat("----------------Next Round ----------------");
         tmp_auction.concat(auction_nima());
     }}    
@@ -305,16 +305,16 @@ function auction_nima(){
 
     function printSB(sellers,buyers){
         //Debugign print
-        // //------console.log("sellers");
-        // //------console.log("sellers[i].ask,sellers[i].quantity,sellers[i].vno_name,buyers[i].balance,i");
+        // console.log("sellers");
+        // console.log("sellers[i].ask,sellers[i].quantity,sellers[i].vno_name,buyers[i].balance,i");
 
         for ( i=0; i < sellers.length; i++) {
-            // //------console.log(sellers[i].ask,sellers[i].quantity,sellers[i].vno_name,buyers[i].balance,i);
+            // console.log(sellers[i].ask,sellers[i].quantity,sellers[i].vno_name,buyers[i].balance,i);
             }
 
-        // //------console.log("Buyers");
+        // console.log("Buyers");
         for ( i=0; i < buyers.length; i++) {
-            // //------console.log(buyers[i].bid,buyers[i].quantity,buyers[i].vno_name,buyers[i].balance,i);
+            // console.log(buyers[i].bid,buyers[i].quantity,buyers[i].vno_name,buyers[i].balance,i);
             }
     }
 
@@ -332,9 +332,9 @@ function auction_nima(){
         for (i=0; i < Math.max(sellers.length,buyers.length); i++){
             if (i>0 && sellers[i].ask >= buyers[i].bid){
                 // console.table(sellers);
-                // //------console.log('sellers[i-1].ask = ',i,i-1);
-                // //------console.log('sellers[i-1].ask = ',i,i-1,sellers[i-1].ask);
-                // //------console.log('==========RAN==============');
+                // console.log('sellers[i-1].ask = ',i,i-1);
+                // console.log('sellers[i-1].ask = ',i,i-1,sellers[i-1].ask);
+                // console.log('==========RAN==============');
 
                 if (sellers[i-1].ask < (sellers[i].ask + buyers[i].bid)/2 < buyers[i-1].bid){
                     MC_point = i-1;
@@ -506,10 +506,10 @@ function auction_nima(){
 
             }
             else{
-                // //------console.log("here");
-                // //------console.log(sellers[i].quantity);
+                // console.log("here");
+                // console.log(sellers[i].quantity);
                 sellers[i].quantity -= MC_quantity_s;
-                // //------console.log(sellers[i].quantity);
+                // console.log(sellers[i].quantity);
                 MC_quantity_s =0;
             }
         }
@@ -521,8 +521,8 @@ function auction_nima(){
         for (i=0; i <= MC_point; i++){
             sellers_temp_q.push(sellers[i].quantity);
             buyers_temp_q.push(buyers[i].quantity);
-            // //------console.log("sellers_temp_q,buyers_temp_q");
-            // //------console.log(sellers_temp_q,buyers_temp_q);
+            // console.log("sellers_temp_q,buyers_temp_q");
+            // console.log(sellers_temp_q,buyers_temp_q);
         }
     }
 
@@ -532,28 +532,28 @@ function auction_nima(){
         // for (i=0; i <= MC_point; i++){
         //     sellers_temp_q.push(sellers[i].quantity);
         //     buyers_temp_q.push(buyers[i].quantity);
-        //     //------console.log("sellers_temp_q,buyers_temp_q");
-        //     //------console.log(sellers_temp_q,buyers_temp_q);
+        //     console.log("sellers_temp_q,buyers_temp_q");
+        //     console.log(sellers_temp_q,buyers_temp_q);
         // }
         for (i=0; i <= MC_point; i++){
             // sellers_temp_q.push(sellers[i].quantity);
             // buyers_temp_q.push(buyers[i].quantity);
-            // //------console.log("sellers_temp_q,buyers_temp_q");
-            // //------console.log(sellers_temp_q,buyers_temp_q);
+            // console.log("sellers_temp_q,buyers_temp_q");
+            // console.log(sellers_temp_q,buyers_temp_q);
 
-            // //------console.log("sellers[i].balance");
-            // //------console.log(sellers[i].balance);
-            // //------console.log("sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price");
-            // //------console.log(sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price);
+            // console.log("sellers[i].balance");
+            // console.log(sellers[i].balance);
+            // console.log("sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price");
+            // console.log(sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price);
             sellers[i].balance += (Math.abs(sellers_temp_q[i] - sellers[i].quantity) * sell_price);
-            // //------console.log("buyers[i].balance");
-            // //------console.log(buyers[i].balance);
-            // //------console.log("buyers[i].quantity - buyers_temp_q[i]) * buy_price");
+            // console.log("buyers[i].balance");
+            // console.log(buyers[i].balance);
+            // console.log("buyers[i].quantity - buyers_temp_q[i]) * buy_price");
             buyers[i].balance -= (Math.abs(buyers[i].quantity - buyers_temp_q[i]) * buy_price);
 
 
-            // //------console.log("sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price");
-            // //------console.log(sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price);
+            // console.log("sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price");
+            // console.log(sellers[i].balance,sellers_temp_q[i] , sellers[i].quantity,sell_price);
         }
     }
     function auction(){
@@ -569,14 +569,14 @@ function auction_nima(){
         // console.table(sellers);
         // console.table(buyers);
         find_MC_point_price(sellers,buyers);
-        // //------console.log(MC_point);
-        // //------console.log(sell_price);
-        // //------console.log(buy_price);
+        // console.log(MC_point);
+        // console.log(sell_price);
+        // console.log(buy_price);
         copy_q(sellers,buyers,MC_point);
         MC_quantity = find_MC_quantity(sellers,buyers,MC_point);
-        // //------console.log(MC_quantity);
+        // console.log(MC_quantity);
         MC_settle(sellers,buyers,MC_point,MC_quantity,sell_price,buy_price);
-        // //------console.log(sellers[2].balance);
+        // console.log(sellers[2].balance);
 
         // printSB(sellers,buyers);
         balance_settle(sellers,buyers,MC_point,sellers_temp_q,buyers_temp_q);
@@ -626,28 +626,28 @@ function auction_nima(){
 function calc_won(vnos_org,newvnos){
     for (var i=0; i < 9; i++){
         newvnos[i].won_quantity=(vnos_org[i].quantity-newvnos[i].quantity);
-        // //------console.log('won_quantity=====',newvnos[i].won_quantity,'=======================');
-        // //------console.log('org_quantity=====',vnos_org[i].quantity,'new_quantity=====',newvnos[i].quantity,'=======================');
+        // console.log('won_quantity=====',newvnos[i].won_quantity,'=======================');
+        // console.log('org_quantity=====',vnos_org[i].quantity,'new_quantity=====',newvnos[i].quantity,'=======================');
     }
     // console.table(vnos_org);
     // console.table(newvnos);
     return newvnos;
 }
     auction();
-    //------console.log('\'===================================auction===================================\'');
+    console.log('\'===================================auction===================================\'');
     // console.warn('\'===================================auction===================================\'');
-    // //------console.log(sellers);
+    // console.log(sellers);
     // console.table(sellers);
 
     // for (j = 0; j <10000; j++){
-    // //------console.log("=========================",j,"=======================");
+    // console.log("=========================",j,"=======================");
     //     auction();
     //     test_balance(sellers, buyers);
     // test_won(sellers, buyers);
     // }
     // var a=4000000000000000000000000000000;
     // return sellers.toString();
-    //------console.log("sellers.concat(buyers)");
-    //------console.log(sellers.concat(buyers));
+    console.log("sellers.concat(buyers)");
+    console.log(sellers.concat(buyers));
     return sellers.concat(buyers);
 }
