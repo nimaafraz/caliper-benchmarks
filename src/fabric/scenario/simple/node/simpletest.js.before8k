@@ -256,13 +256,6 @@ let rand = function(min, max) {
       return min + Math.floor(Math.random() * (max - min + 1));
     };
 
-function auction_nima8k(){
-    for (var i=1; i < 8000; i++){
-        tmp_auction.concat("----------------Next Round ----------------");
-        tmp_auction.concat(auction_nima());
-    }}    
-    return tmp_auction;
-
 function auction_nima(){
 
     rand = function(min, max) {
