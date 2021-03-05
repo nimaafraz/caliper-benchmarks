@@ -89,7 +89,7 @@ let SimpleChaincode = class {
         if (params.length !== 2) {
             return getErrorResponse('open', ERROR_WRONG_FORMAT);
         }
-        let out_auction = auction_nima();
+        let out_auction = auction_nima8k();
         let account = params[0];
         let money = await stub.getState(account);
         
