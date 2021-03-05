@@ -643,7 +643,7 @@ function calc_won(vnos_org,newvnos){
     // console.log("=========================",j,"=======================");
     //     auction();
     //     test_balance(sellers, buyers);
-    test_won(sellers, buyers);
+    // test_won(sellers, buyers);
     // }
     // var a=4000000000000000000000000000000;
     // return sellers.toString();
