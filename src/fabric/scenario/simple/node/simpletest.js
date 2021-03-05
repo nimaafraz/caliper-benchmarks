@@ -258,7 +258,7 @@ let rand = function(min, max) {
 
 function auction_nima8k(){
     var tmp_auction=[];
-    for (var i=1; i < 2; i++){
+    for (var i=1; i < 800; i++){
         tmp_auction.concat("----------------Next Round ----------------");
         tmp_auction.concat(auction_nima());
     }    
