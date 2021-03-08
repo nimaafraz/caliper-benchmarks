@@ -1,7 +1,7 @@
 simpleArgs: &simple-args
   initialMoney: 10000
   moneyToTransfer: 100
-  numberOfAccounts: &number-of-accounts 1000
+  numberOfAccounts: &number-of-accounts 100
 
 test:
   name: simple
@@ -20,7 +20,7 @@ test:
       rateControl:
         type: fixed-rate
         opts:
-          tps: 1
+          tps: 2
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
