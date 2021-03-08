@@ -1,7 +1,7 @@
 simpleArgs: &simple-args
   initialMoney: 10000
   moneyToTransfer: 100
-  numberOfAccounts: &number-of-accounts 1000
+  numberOfAccounts: &number-of-accounts 10
 
 test:
   name: simple
@@ -24,28 +24,28 @@ test:
       workload:
         module: benchmarks/scenario/simple/open.js
         arguments: *simple-args
-    # - label: query
-    #   description: Test description for the query performance of the deployed contract.
-    #   txNumber: *number-of-accounts
-    #   rateControl:
-    #     type: fixed-rate
-    #     opts:
-    #       tps: 10
-    #   workload:
-    #     module: benchmarks/scenario/simple/query.js
-    #     arguments: *simple-args
-    # - label: transfer
-    #   description: Test description for transfering money between accounts.
-    #   txNumber: 10
-    #   rateControl:
-    #     type: fixed-rate
-    #     opts:
-    #       tps: 10
-    #   workload:
-    #     module: benchmarks/scenario/simple/transfer.js
-    #     arguments:
-    #       << : *simple-args
-    #       money: 100
+    - label: query
+      description: Test description for the query performance of the deployed contract.
+      txNumber: *number-of-accounts
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/simple/query.js
+        arguments: *simple-args
+    - label: transfer
+      description: Test description for transfering money between accounts.
+      txNumber: 10
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 10
+      workload:
+        module: benchmarks/scenario/simple/transfer.js
+        arguments:
+          << : *simple-args
+          money: 100
 
 
 monitors:
